@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foodie - Sign In</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">Foodie</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+      </nav>
+    </div>
+    <div class="nav-right" id="nav-auth-area">
+      <button class="cart-btn" onclick="handleCartClick()">🛒 <span id="cart-badge" class="cart-badge" style="display:none;">0</span></button>
+      <a href="login.html" id="nav-login-link">Login</a>
+      <a href="register.html" class="btn-orange" id="nav-signup-link">Sign Up</a>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Sign in to your account</p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="pass-wrapper">
+            <input type="password" id="login-password" placeholder="••••••••" required />
+            <button type="button" class="eye-btn" onclick="togglePasswordVisibility('login-password')">👁</button>
+          </div>
+        </div>
+
+        <div class="auth-options">
+          <label class="remember-label"><input type="checkbox" id="remember-me" checked /> Remember me</label>
+          <a href="#" onclick="openForgotModal(event)">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-orange full-btn">Sign In</button>
+      </form>
+
+      <div class="auth-divider"><span>or</span></div>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="register.html">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="forgot-modal" style="display:none;">
+    <div class="modal-box">
+      <h3>Reset Password</h3>
+      <p>Enter your email to receive a reset token, then set a new password.</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="reset-email" placeholder="you@example.com" />
+      </div>
+      <button type="button" class="btn-clear" style="margin-bottom:12px;" onclick="sendForgotCode()">Send Code to Email</button>
+      <div class="form-group">
+        <label>Reset Token / Code</label>
+        <input type="text" id="reset-token" placeholder="Code from email" />
+      </div>
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" id="reset-new-password" placeholder="••••••••" />
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn-orange full-btn" onclick="submitPasswordReset()">Reset Password</button>
+        <button type="button" class="btn-clear" onclick="closeForgotModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
